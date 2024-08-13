@@ -19,7 +19,7 @@ session_start();
     </select>
 
     <?php
-    if(!isset(session_id('id'))){
+    if(!isset($_SESSION['id'])){
 
         echo "<a href='login.php' style='float:right;'>เข้าสู่ระบบ</a>";
 
