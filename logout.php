@@ -1,6 +1,6 @@
 <?php
 session_start();
-session_destroy();// ลบการlogin
-header("location:index.php"); // ส่งกลับindex
+session_destroy();
+header("location:index.php");
 die();
 ?>

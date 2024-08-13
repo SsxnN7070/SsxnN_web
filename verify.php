@@ -1,5 +1,9 @@
 <?php
 session_start();
+if(isset($_SESSION['id'])){
+    header("location:index.php");
+    die();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +13,7 @@ session_start();
     <title>Verify</title>
 </head>
 <body>
-    <h1 style="text-align: center;">Webbord KakKak</h1>
+    <h1 style="text-align: center;">Webbord SsunN</h1>
     <hr>
     <div style="text-align: center;">
         <?php
@@ -20,7 +24,7 @@ session_start();
             $_SESSION['username']='admin';
             $_SESSION['role']='a';
             $_SESSION['id']=session_id();
-            
+
             echo "ยินดีต้อนรับคุณ ADMIN";
         }
         

@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(isset($_SESSION['id'])){
+    header("location:index.php");
+    die();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +13,7 @@
     <title>login</title>
 </head>
 <body>
-    <h1 style="text-align: center;">Webbord KakKak</h1>
+    <h1 style="text-align: center;">Webbord SsunN</h1>
     <hr>
     <center>
         <table style="border: 2px solid black; width: 40%;" align="center">
