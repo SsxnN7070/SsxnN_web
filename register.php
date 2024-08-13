@@ -22,7 +22,7 @@
         <tr><td colspan="2" align="center"><input type="submit" value="สมัครสมาชิก"></td></tr>
     </table>
 
-    <div><a href="index.html"><br>กลับไปหน้าหลัก</a></div>
+    <div><a href="index.php"><br>กลับไปหน้าหลัก</a></div>
     </center>
 </body>
 </html>
