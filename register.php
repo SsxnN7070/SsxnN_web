@@ -43,18 +43,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Register</title>
 </head>
 <body>
-    <!-- <script>
-        function OnblurPwd() {
+    <script>
+        function comfirmpwd() {
             let pwd1 = document.getElementById("pwd1");
             let pwd2 = document.getElementById("pwd2");
             if (pwd1.value !== pwd2.value) {
-                alert("Passwords do not match. Please try again.");
+                alert("รหัสผ่านทั้งสองช่องไม่ตรงกัน");
+                pwd1.value = "";
                 pwd2.value = "";
             }
         }
-    </script> -->
+    </script>
     <div class="container-lg">
-        <h1 class="mt-3 text-center">Webboard SsunN</h1>
+        <h1 class="mt-3 text-center">Webboard SsxnN</h1>
+        <?php include "nav.php" ?>
         <div class="row mt-4">
             <div class="col-lg-3 col-md-2 col-sm-1"></div>
             <div class="col-lg-6 col-md-8 col-sm-10">
@@ -62,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class='alert alert-danger'><?= htmlspecialchars($error_message) ?></div>
                 <?php endif; ?>
                 <div class="card border-primary">
-                    <div class="card-header bg-primary text-white">Log In</div>
+                    <div class="card-header bg-primary text-white">REGISTER</div>
                     <div class="card-body">
                         <form action="register_save.php" method="post">
                             <div class="row">
@@ -77,12 +79,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     <input id="pwd1" type="password" name="pwd" class="form-control" required>
                                 </div>
                             </div>
-                            <!-- <div class="row mt-3">
+                            <div class="row mt-3">
                                 <label for="pwd2" class="col-lg-3 col-form-label">Confirm Password:</label>
                                 <div class="col-lg-9">
-                                    <input id="pwd2" type="password" name="pwd2" onblur="OnblurPwd()" class="form-control" required>
+                                    <input id="pwd2" type="password" name="pwd2" onblur="comfirmpwd()" class="form-control" required>
                                 </div>
-                            </div> -->
+                            </div>
                             <div class="row mt-3">
                                 <label for="name" class="col-lg-3 col-form-label">Full Name:</label>
                                 <div class="col-lg-9">
