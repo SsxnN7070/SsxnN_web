@@ -6,31 +6,27 @@ if (!isset($_SESSION['id']) || $_SESSION['role'] != 'a') {
 }
 
 try {
-    // Database connection
     $conn = new PDO("mysql:host=localhost;dbname=webboard;charset=utf8", "root", "");
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // Retrieve data from POST request
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $id = $_POST['id'];
-        $username = trim($_POST['username']); // Use 'username' to match your form input
+        $username = trim($_POST['username']);
         $name = trim($_POST['name']);
         $gender = trim($_POST['gender']);
         $email = trim($_POST['email']);
         $role = trim($_POST['role']);
 
-        // Validation
         if (empty($username) || empty($name) || empty($email) || empty($role)) {
             $_SESSION['edit_user'] = "error";
-            header("location: user.php?id=$id"); // Redirect back to the edit form
+            header("location: user.php?id=$id");
             exit();
         }
 
-        // Update user in the database
         $sql = "UPDATE user SET login = :username, name = :name, gender = :gender, email = :email, role = :role WHERE id = :id";
         $stmt = $conn->prepare($sql);
         $stmt->execute([
-            ':username' => $username, // Correct parameter name
+            ':username' => $username,
             ':name' => $name,
             ':gender' => $gender,
             ':email' => $email,
@@ -39,7 +35,7 @@ try {
         ]);
 
         $_SESSION['edit_user'] = "success";
-        header("location: user.php"); // Redirect to the user list page after successful edit
+        header("location: user.php");
         exit();
     }
 } catch (PDOException $e) {

@@ -1,18 +1,4 @@
 <?php
-/*
-    
-    Note:
-    l_eXX: login error;
-
-    r_sXX: register success;
-    r_eXX: register error;
-
-    p_sXX: post success;
-    p_eXX: post error;
-
-    c_sXX: comment success;
-    c_eXX: comment error;
-*/ 
 $msg = [
     'l_e01' => "บัญชีหรือรหัสผ่านไม่ถูกต้อง",
 

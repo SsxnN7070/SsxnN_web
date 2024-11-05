@@ -11,9 +11,9 @@ session_start();
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"></script>
     <title style="text-align: center; font-size: 54px;">WebBoard SsxnN</title>
     <script>
-        function myFunction(){
-            let r=confirm("แน่ใจใช่มั้ยว่าจะลบเรื่องราวทั้งหมด ?");
-            return r;
+        function surec(){
+            let c=confirm("แน่ใจใช่มั้ยว่าจะลบ ?");
+            return c;
         }
     </script>
 </head>
@@ -64,16 +64,16 @@ session_start();
     <table class = "table table-striped mt-4">
     <?php
         $conn = new PDO("mysql:host=localhost;dbname=webboard;charset=utf8" , "root" , "");
-        if(isset($_GET['id'])){
+        if(isset($_GET['id']) && $_SESSION['role']!='b'){
             $sql="SELECT category.name,post.title,post.id,user.login,post.post_date,user.id as 'user_id' FROM post 
             INNER JOIN user  ON (post.user_id=user.id)
             INNER JOIN category  ON (post.cat_id=category.id)
-            WHERE post.cat_id=$_GET[id] 
+            WHERE post.cat_id=$_GET[id] AND user.role != 'b'
             ORDER BY post.post_date DESC" ;
         }else{
             $sql="SELECT category.name,post.title,post.id,user.login,post.post_date,user.id as 'user_id' FROM post 
             INNER JOIN user ON (post.user_id=user.id)
-            INNER JOIN category ON (post.cat_id=category.id) 
+            INNER JOIN category ON (post.cat_id=category.id) WHERE user.role != 'b'
             ORDER BY post.post_date DESC" ;
         }
         $result=$conn->query($sql);
@@ -82,16 +82,15 @@ session_start();
             <div class='flex-grow-1'>[ $row[0] ]<a href=post.php?id=$row[2]
             style=text-decoration:none> $row[1]</a><br>$row[3] - $row[4]</div>";
             if(isset($_SESSION['id'])){
-                if($_SESSION['user_id']==$row['user_id']){
+                if($_SESSION['user_id']==$row['user_id'] ){
                     echo "<div class='me-2 align-self-center'><a href='editpost.php?id=$row[2]' 
                     class='btn btn-warning btn-sm' onclick=''><i class='bi bi-pencil-fill'></i></a></div>";
-
                     echo "<div class='me-2 align-self-center'><a href=delete.php?id=$row[2]
-                    class='btn btn-danger btn-sm' onclick='return myFunction()'><i class='bi bi-trash'></i></a></div>";
+                    class='btn btn-danger btn-sm' onclick='return surec()'><i class='bi bi-trash'></i></a></div>";
                 }
                 else if($_SESSION['role']=='a'){
                     echo "<div class='me-2 align-self-center'><a href=delete.php?id=$row[2]
-                    class='btn btn-danger btn-sm' onclick='return myFunction()'><i class='bi bi-trash'></i></a></div>";
+                    class='btn btn-danger btn-sm' onclick='return surec()'><i class='bi bi-trash'></i></a></div>";
                 }
             }
         }

@@ -90,7 +90,7 @@ if (!isset($_SESSION['id']) || $_SESSION['role'] != "a") {
                         <input type="hidden" name="id" id="editUserId">
                         <div class="mb-3">
                             <label for="editUsername" class="form-label">Username</label>
-                            <input type="text" class="form-control" id="editUsername" name="username" required>
+                            <input type="text" class="form-control" id="editUsername" name="username" required >
                         </div>
                         <div class="mb-3">
                             <label for="editName" class="form-label">Name</label>
@@ -112,7 +112,7 @@ if (!isset($_SESSION['id']) || $_SESSION['role'] != "a") {
                             <select class="form-select" id="editRole" name="role" required>
                                 <option value="m">Member</option>
                                 <option value="a">Admin</option>
-                                <option value="b">Band</option>
+                                <option value="b">Ban</option>
                             </select>
                         </div>
                     </div>
